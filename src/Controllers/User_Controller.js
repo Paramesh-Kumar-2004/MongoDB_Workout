@@ -2,24 +2,31 @@ const User = require("../Models/User_Model")
 
 
 
-async function AllUsers(req, res) {
-    console.log("Enter Into AllUser Controller")
+async function CreateUser(req, res) {
+
+    console.log("Enter Into Create User Function")
+
+    const { Name, Age, Email, location } = req.body
+
+    if (!Name || !Age || !Email) {
+        return res.json({
+            "Message": "Some Feilds Are Missing"
+        })
+    }
+
     try {
-        // const { Name, Age } = req.body
-        // await res.json(Name)
-        res.json("All User")
+        const User_Data = await User.create({ email: Email, name: Name, age: Age, location })
+        res.status(200).json({
+            "Message": "Users Created Successfully",
+            "User_Data": User_Data
+        })
     } catch (error) {
-        console.log("Error : ", error)
+        console.log("Error While Creating User", error)
+        res.status(200).json({
+            "Message": error.message
+        })
     }
 }
 
 
-function SingleUser(req, res) {
-    res.json({
-        "Name": "Single User",
-        "Age": 21
-    })
-}
-
-
-module.exports = { AllUsers, SingleUser }
+module.exports = CreateUser
