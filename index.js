@@ -2,8 +2,8 @@ const express = require("express")
 const dotenv = require("dotenv").config()
 const cors = require("cors")
 
-const ConnectDB = require("./DBConnection/DBConfig.js")
-const User_Route = require("./Router/User_Route.js")
+const ConnectDB = require("./src/DBConnection/DBConfig.js")
+const User_Route = require("./src/Router/User_Route.js")
 
 const app = express()
 
