@@ -20,7 +20,8 @@ async function CreateUser(req, res) {
             "Message": "Users Created Successfully...",
             "User_Data": User_Data
         })
-    } catch (error) {
+    }
+    catch (error) {
         console.log("Error While Creating User", error)
         res.status(200).json({
             "Message": error.message
