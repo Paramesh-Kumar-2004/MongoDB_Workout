@@ -17,7 +17,7 @@ async function CreateUser(req, res) {
     try {
         const User_Data = await User.create({ email: Email, name: Name, age: Age, location })
         res.status(200).json({
-            "Message": "Users Created Successfully",
+            "Message": "Users Created Successfully...",
             "User_Data": User_Data
         })
     } catch (error) {
